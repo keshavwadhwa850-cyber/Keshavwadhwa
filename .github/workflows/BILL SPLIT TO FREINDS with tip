@@ -1,0 +1,17 @@
+print("hello Welcome to Tip and Total mbill and split your bill calulator")
+
+a=int(input("what is your Total bill:-"))
+b=int(input("How many pepoles You are:-"))
+c=int(input("How much percent You want to add Tip 1 to 10 percent:-"))
+
+d=(a*c/100)
+print("TOTAL TIP YOU ARE GIVING:-",d)
+
+v=(a+d)
+print("your Total Bill With tip Is:-",v)
+
+t=(v/b)
+print("every Person Want to pay minimum:-",t,"To Clear the bill")
+
+print("Thanks ")
+
