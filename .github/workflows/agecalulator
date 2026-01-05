@@ -1,0 +1,15 @@
+print("welcome to Age Calulator or How many Days,week and Year Left For you in this Earth for leveing")
+A=int(input("what is your Age Right NOW:-"))
+B=int(input("How Much Year You think You Gone Live in this Earth:-"))
+print("According to you You gone Live",B,"mmm That A Good number")
+
+Y=(B-A)
+print("Years Left in this Earth for you is:-",Y)
+
+W=(B*56)-(A*56)
+print("WEEK Left For you in This Earth:-",W)
+
+D=(B*365)-(A*365)
+print("DAY Left For you in This Earth:-",D)
+
+print("Thanks For using This Hope You injoy")
