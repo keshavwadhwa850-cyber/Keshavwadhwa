@@ -1,0 +1,13 @@
+print("Welcome to The Park")
+h=int(input("what is Yor hight in CM:-"))
+
+if h>160:
+    print("Welcome to The park")
+
+    a=int(input("what is your age:-"))
+    if a>16:
+        print("please pay 17$")
+    elif a<16:
+        print("plese pay 14$")
+else:
+    print("Sorry Go back to home")
