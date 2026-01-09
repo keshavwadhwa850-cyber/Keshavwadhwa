@@ -1,0 +1,54 @@
+print("Hello Welcome to LODA LASAN PIZZA\n")
+##Welocme Massage##
+print("Pizza Start form only 10$\n")
+bill=0
+print("There are So many type of pizza Which one you need\n")
+##size of pizza#
+s=int(input("For Small Type:-1\n For Medium Type :-2\n for Bigger Type :-3\n:::-"))
+#for small size#
+if s==1:
+    bill=bill+10
+    print("you Choose Small Size Of pizza Thats a Wonder Full choose and its only 10$ starting pizza\n")
+#for meduim size#
+elif s==2:
+    bill=bill+15
+    print("you Choose Medium Size Of pizza Thats a Wonder Full choose and its only 15$ starting pizza\n")
+#for bigger size#
+elif s==3:
+    bill=bill+18
+    print("you Choose Big Size Of pizza Thats a Wonder Full choose and its only 18$ starting pizza\n")
+#how much pizza you need
+k=int(input("how much Pizza you need:-"))
+d=(bill*k)
+
+#toping 1#
+top=int(input("Do you need Extra oninos TYPE 1 for Yes or 2 For no :-"))
+
+if top==1:
+    d =d + 5 
+    print("adding Extra Oninos\n")
+elif top==2:
+    print("oK Not adding Oninons\n")
+
+#toping 2#
+top2=int(input("Do you need Extra Jalapino TYPE 1 for Yes or 2 For no :-"))
+
+if top2==1:
+    d =d + 8
+    print("adding Extra Jalapino\n")
+elif top2==2:
+    print("oK Not adding Jalapino\n")
+
+#tpoing 3#
+top3=int(input("Do you need Extra Paprroni TYPE 1 for Yes or 2 For no :-"))
+
+if top3==1:
+    d =d + 10
+    print("adding Extra Paprroni\n")
+elif top3==2:
+    print("oK Not adding Paprroni\n")
+
+#total Bill 
+print ("your total bill is :-",d,"\n")
+
+print("Thanks For visting See you again")
