@@ -1,0 +1,8 @@
+Student_scor = input("write Student Scorw in spacese:-").split()
+
+highest_score = 0
+for score_str in Student_scor:
+    score = int(score_str) # Convert the string score to an integer
+    if score > highest_score:
+        highest_score = score
+print(f"The hights score is :-{highest_score}")
