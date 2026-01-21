@@ -1,0 +1,12 @@
+print("welcome To FIZZ BUZZ Game")
+A=int(input("Where You Want Start the numbers:- "))
+B=int(input("Where You Want End the numbers:- "))
+for n in range(A,B):
+    if n % 3 == 0 and n % 5==0:
+        print("FizzBuzz")
+    elif n % 3 == 0:
+        print("Fizz")
+    elif n % 5 == 0:
+        print("Buzz")
+    else:
+        print(n)
