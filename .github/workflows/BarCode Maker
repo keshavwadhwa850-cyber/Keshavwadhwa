@@ -1,0 +1,205 @@
+import tkinter as tk
+from tkinter import filedialog, messagebox
+
+import barcode
+
+from PIL import Image, ImageTk
+from barcode.writer import ImageWriter
+
+
+# ==============================
+# Main Window
+# ==============================
+
+window = tk.Tk()
+
+window.title("Product Barcode Generator")
+
+window.geometry("480x580")
+
+
+# ==============================
+# Product Name
+# ==============================
+
+product_label = tk.Label(
+    window,
+    text="Product Name"
+)
+
+product_label.pack(pady=(20, 5))
+
+
+product_entry = tk.Entry(
+    window,
+    width=60
+)
+
+product_entry.pack()
+
+
+# ==============================
+# Product Code
+# ==============================
+
+code_label = tk.Label(
+    window,
+    text="Product Code"
+)
+
+code_label.pack(pady=(20, 5))
+
+
+code_entry = tk.Entry(
+    window,
+    width=60
+)
+
+code_entry.pack()
+
+
+# ==============================
+# Barcode Preview
+# ==============================
+
+barcode_label = tk.Label(window)
+
+barcode_label.pack(pady=30)
+
+
+# ==============================
+# Generate Barcode
+# ==============================
+
+def generate_barcode():
+
+    product_code = code_entry.get().strip()
+
+    if product_code == "":
+        messagebox.showerror(
+            "Error",
+            "Please enter Product Code."
+        )
+        return
+
+    barcode_class = barcode.get_barcode_class("code39")
+
+    barcode_instance = barcode_class(
+        product_code,
+        writer=ImageWriter()
+    )
+
+    barcode_instance.save("temp_barcode")
+
+    image = Image.open("temp_barcode.png")
+
+    image = image.resize((150, 100))
+
+    barcode_image = ImageTk.PhotoImage(image)
+
+    barcode_label.config(
+        image=barcode_image
+    )
+
+    barcode_label.image = barcode_image
+
+
+# ==============================
+# Generate Button
+# ==============================
+
+generate_button = tk.Button(
+    window,
+    text="Generate Barcode",
+    command=generate_barcode
+)
+
+generate_button.pack(pady=10)
+
+
+# ==============================
+# File Name
+# ==============================
+
+filename_label = tk.Label(
+    window,
+    text="File Name"
+)
+
+filename_label.pack(pady=(10, 5))
+
+
+filename_entry = tk.Entry(
+    window,
+    width=50
+)
+
+filename_entry.pack()
+
+
+# ==============================
+# Save Barcode
+# ==============================
+
+def save_barcode():
+
+    product_code = code_entry.get().strip()
+    filename = filename_entry.get().strip()
+
+    if product_code == "":
+        messagebox.showerror(
+            "Error",
+            "Please enter Product Code."
+        )
+        return
+
+    if filename == "":
+        filename = product_code
+
+    save_path = filedialog.asksaveasfilename(
+        title="Save Barcode",
+        defaultextension=".png",
+        filetypes=[
+            ("PNG Image", "*.png")
+        ],
+        initialfile=filename
+    )
+
+    if not save_path:
+        return
+
+    barcode_class = barcode.get_barcode_class("code39")
+
+    barcode_instance = barcode_class(
+        product_code,
+        writer=ImageWriter()
+    )
+
+    barcode_instance.save(
+        save_path[:-4]
+    )
+
+    messagebox.showinfo(
+        "Success",
+        "Barcode saved successfully!"
+    )
+
+
+# ==============================
+# Save Button
+# ==============================
+
+save_button = tk.Button(
+    window,
+    text="Save Barcode",
+    command=save_barcode
+)
+
+save_button.pack(pady=10)
+
+
+# ==============================
+# Start Application
+# ==============================
+
+window.mainloop()
